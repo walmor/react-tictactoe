@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.board-wrap {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.board {
+  display: inline-block;
+  margin: auto;
+  border: 1px solid #888;
+}
+
+.square {  
+  position: relative;
+  float: left;
+  width:70px;
+  height: 70px;
+  background-color: #fff;   
+  border: 1px solid #888;
+  font-size: 1.4em;
+  font-weight: bold;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.square.winner {
+  background-color: rgb(168, 240, 179);
+}
+
+.square:nth-child(3n) + .square {
+  clear: both;
+}
+
+.message {
+  margin: auto;
+  background-color: #eee;
+  padding: 10px;
+  width: 212px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul.history {
+  list-style: none;  
+  width: 250px;  
+  margin: auto;
+  margin-top: 20px;
+  padding: 0;
+}
+
+ul.history li {
+  background: #eee;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+ul.history li:hover {
+  background: #ddd;
+}
+
+ul.history li.selected {
+  background: rgb(69, 120, 214);
+  cursor: default;  
+}
