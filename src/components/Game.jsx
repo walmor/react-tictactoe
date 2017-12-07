@@ -31,11 +31,12 @@ export default class Game extends React.Component {
       <div>
         <h1>Tic Tac Toe</h1>
         <Board gameState={gameState} onClick={this.handleSquareClick} />
-        <GameState gameState={gameState} onResetClick={this.handleReset} />
+        <GameState gameState={gameState} />
         <GameHistory
           history={history}
           selectedStateIndex={selectedStateIndex}
-          onClick={this.handleSelectGameState}
+          onSelectGameStateClick={this.handleSelectGameState}
+          onResetClick={this.handleReset}
         />
       </div>
     );

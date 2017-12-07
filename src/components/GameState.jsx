@@ -4,10 +4,9 @@ import TicTacToeState from '../core/TicTacToeState';
 
 const propTypes = {
   gameState: PropTypes.instanceOf(TicTacToeState).isRequired,
-  onResetClick: PropTypes.func.isRequired,
 };
 
-export default function GameState({ gameState, onResetClick }) {
+export default function GameState({ gameState }) {
   let message;
 
   if (gameState.hasWinner()) {
@@ -21,7 +20,6 @@ export default function GameState({ gameState, onResetClick }) {
   return (
     <div className="message">
       <span>{message}</span>
-      <button onClick={onResetClick}>Reset</button>
     </div>
   );
 }

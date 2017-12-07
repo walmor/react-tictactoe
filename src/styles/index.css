@@ -16,12 +16,12 @@ body {
   border: 1px solid #888;
 }
 
-.square {  
+.square {
   position: relative;
   float: left;
-  width:70px;
+  width: 70px;
   height: 70px;
-  background-color: #fff;   
+  background-color: #fff;
   border: 1px solid #888;
   font-size: 1.4em;
   font-weight: bold;
@@ -49,26 +49,36 @@ h1 {
   text-align: center;
 }
 
-ul.history {
-  list-style: none;  
-  width: 250px;  
+div.history {
+  width: 250px;
   margin: auto;
   margin-top: 20px;
+  text-align: center;
+}
+
+div.history ul {
+  list-style: none;
   padding: 0;
 }
 
-ul.history li {
+div.history ul li {
   background: #eee;
-  padding: 5px 10px;
   margin-bottom: 5px;
   cursor: pointer;
 }
 
-ul.history li:hover {
+div.history ul li:hover {
   background: #ddd;
 }
 
-ul.history li.selected {
+div.history ul li.selected {
   background: rgb(69, 120, 214);
-  cursor: default;  
+  cursor: default;
+}
+
+div.history ul li button {
+  border: none;
+  width: 100%;
+  background: transparent;
+  padding: 5px 10px;
 }
