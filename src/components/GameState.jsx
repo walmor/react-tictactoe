@@ -18,7 +18,7 @@ export default function GameState({ gameState }) {
   }
 
   return (
-    <div className="message">
+    <div className="state-message">
       <span>{message}</span>
     </div>
   );

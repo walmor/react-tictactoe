@@ -1,6 +1,6 @@
-const PLAYER = { X: 'X', O: 'O' };
+const PLAYER = { None: '', PlayerOne: 'X', PlayerTwo: 'O' };
 
-export default class TicTacToeState {
+class TicTacToeState {
   constructor(index, previousState) {
     let board;
     let player;
@@ -29,9 +29,9 @@ export default class TicTacToeState {
   getNextPlayer() {
     const player = this.getPlayer();
 
-    if (!player) return PLAYER.X;
+    if (!player) return PLAYER.PlayerOne;
 
-    return player === PLAYER.X ? PLAYER.O : PLAYER.X;
+    return player === PLAYER.PlayerOne ? PLAYER.PlayerTwo : PLAYER.PlayerOne;
   }
 
   hasWinner() {
@@ -49,6 +49,10 @@ export default class TicTacToeState {
   endedInADraw() {
     if (this.getWin()) return false;
     return this.isBoardCompleted();
+  }
+
+  isGameOver() {
+    return this.hasWinner() || this.endedInADraw();
   }
 
   isWinnerSquare(index) {
@@ -147,3 +151,5 @@ export default class TicTacToeState {
     return new Array(9);
   }
 }
+
+export { TicTacToeState as default, PLAYER };

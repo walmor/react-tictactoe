@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { PLAYER } from '../core/TicTacToeState';
 
 const propTypes = {
   value: PropTypes.string,
@@ -12,7 +13,18 @@ const defaultProps = {
 };
 
 export default function Square({ value, isWinnerSquare, onClick }) {
-  const className = `square${isWinnerSquare ? ' winner' : ''}`;
+  const classPrefix = 'board__square';
+  let className = classPrefix;
+
+  if (value === PLAYER.PlayerOne) {
+    className += '--player-one';
+  } else if (value === PLAYER.PlayerTwo) {
+    className += '--player-two';
+  }
+
+  if (isWinnerSquare) {
+    className += ` ${classPrefix}--winner`;
+  }
 
   return (
     <button className={className} onClick={onClick}>

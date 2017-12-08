@@ -10,26 +10,25 @@ const propTypes = {
 
 export default function Board({ gameState, onClick }) {
   const squares = [];
-  let count = 0;
-  for (let y = 0; y < 3; y++) {
-    for (let x = 0; x < 3; x++) {
-      const key = `${x},${y}`;
-      const c = count;
+  for (let x = 0; x < 9; x++) {
+    const key = x.toString();
 
-      const props = {
-        value: gameState.getValue(c),
-        isWinnerSquare: gameState.isWinnerSquare(c),
-      };
+    const props = {
+      value: gameState.getValue(x),
+      isWinnerSquare: gameState.isWinnerSquare(x),
+    };
 
-      squares.push(<Square key={key} onClick={() => onClick(c)} {...props} />);
+    squares.push(<Square key={key} onClick={() => onClick(x)} {...props} />);
+  }
 
-      count++;
-    }
+  let boardClass = 'board';
+  if (gameState.isGameOver()) {
+    boardClass += '--gameover';
   }
 
   return (
     <div className="board-wrap">
-      <div className="board">{squares}</div>
+      <div className={boardClass}>{squares}</div>
     </div>
   );
 }

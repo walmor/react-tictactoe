@@ -27,7 +27,7 @@ export default function GameHistory(props) {
 
   return (
     <div className="history">
-      <h2>Moves history</h2>
+      <h2 className="subtitle">Moves history</h2>
       {body}
     </div>
   );
