@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   box-sizing: border-box;
   background-color: #313347;
+  font-family: "Nunito", sans-serif;
 }
 
 .game {
@@ -16,6 +18,7 @@ body {
 .title {
   font-size: 50px;
   color: #fff;
+  margin: 20px auto;
 }
 
 .subtitle {
@@ -59,7 +62,9 @@ body {
   background-color: #313347;
   font-size: 50px;
   font-weight: bold;
+  font-family: "Nunito", sans-serif;
   border: 0;
+  outline-color: #4d90fe;
 
   .board--gameover & {
     color: #575966;
@@ -92,38 +97,82 @@ body {
   padding: 15px 0;
   width: 100%;
   color: #fff;
+
+  &--player-one {
+    @extend .state-message;
+    color: #edc84c;
+  }
+
+  &--player-two {
+    @extend .state-message;
+    color: #f44455;
+  }
+
+  &--winner {
+    @extend .state-message;
+    color: #0cc2aa;
+  }
+
+  &--draw {
+    @extend .state-message;
+    color: #ddd;
+  }
 }
 
-div.history {
+.btn-reset {
+  background: #2c2e46;
+  border: 1px solid #8689a2;
+  border-radius: 3px;
   width: 100%;
-  margin: auto;
-  margin-top: 20px;
-  text-align: center;
+  color: #fff;
+  padding: 8px 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  outline-color: #4d90fe;
+
+  &:hover {
+    background-color: #20223a;
+  }
 }
 
-div.history ul {
+.history {
+  width: 100%;
+  margin: 30px auto;
+  text-align: center;
+  color: #fff;
+}
+
+.history__list {
+  width: 100%;
   list-style: none;
   padding: 0;
 }
 
-div.history ul li {
-  background: #eee;
+.history__entry {
+  background: #2c2e46;
   margin-bottom: 5px;
   cursor: pointer;
-}
 
-div.history ul li:hover {
-  background: #ddd;
-}
+  button {
+    border: none;
+    width: 100%;
+    background: transparent;
+    padding: 12px 0;
+    color: #fff;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    outline-color: #4d90fe;
+  }
 
-div.history ul li.selected {
-  background: rgb(69, 120, 214);
-  cursor: default;
-}
+  &:hover {
+    background: #3e4271;
+  }
 
-div.history ul li button {
-  border: none;
-  width: 100%;
-  background: transparent;
-  padding: 5px 10px;
+  &--selected {
+    @extend .history__entry;
+    background: #3e4271;
+    cursor: default;
+  }
 }

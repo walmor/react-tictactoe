@@ -25,7 +25,7 @@ export default function HistoryList({ history, selectedStateIndex, onSelectGameS
     );
   });
 
-  return <ul>{entries}</ul>;
+  return <ul className="history__list">{entries}</ul>;
 }
 
 HistoryList.propTypes = propTypes;
