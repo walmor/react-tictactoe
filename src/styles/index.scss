@@ -1,178 +1,168 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 body {
+  background-color: #313347;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: #313347;
-  font-family: "Nunito", sans-serif;
 }
 
-.game {
-  max-width: 350px;
+.Game {
   margin: auto;
+  max-width: 350px;
   padding: 0 20px;
   text-align: center;
 }
 
-.title {
-  font-size: 50px;
+.Title {
   color: #fff;
+  font-size: 50px;
   margin: 20px auto;
 }
 
-.subtitle {
-  font-size: 20px;
-  color: #fff;
+.Subtitle {
   border-bottom: 1px solid #45495b;
-  padding-bottom: 5px;
-  font-weight: normal;
-}
-
-.board-wrap {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  padding-top: 100%;
-  height: 0;
-  margin-bottom: 20px;
-}
-
-.board {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 1px;
-  justify-items: stretch;
-  background: #45495b;
-  border: 1px solid #45495b;
-
-  &--gameover {
-    @extend .board;
-  }
-}
-
-.board__square {
-  background-color: #313347;
-  font-size: 50px;
-  font-weight: bold;
-  font-family: "Nunito", sans-serif;
-  border: 0;
-  outline-color: #4d90fe;
-
-  .board--gameover & {
-    color: #575966;
-    outline: none;
-  }
-
-  &--player-one {
-    @extend .board__square;
-    color: #edc84c;
-  }
-
-  &--player-two {
-    @extend .board__square;
-    color: #f44455;
-  }
-
-  &--winner {
-    @extend .board__square;
-    .board--gameover & {
-      background-color: #0cc2aa;
-      color: #fff;
-    }
-  }
-}
-
-.state-message {
-  box-sizing: border-box;
-  margin: auto;
-  background-color: #2c2e46;
-  padding: 15px 0;
-  width: 100%;
   color: #fff;
-
-  &--player-one {
-    @extend .state-message;
-    color: #edc84c;
-  }
-
-  &--player-two {
-    @extend .state-message;
-    color: #f44455;
-  }
-
-  &--winner {
-    @extend .state-message;
-    color: #0cc2aa;
-  }
-
-  &--draw {
-    @extend .state-message;
-    color: #ddd;
-  }
+  font-size: 20px;
+  font-weight: normal;
+  padding-bottom: 5px;
 }
 
-.btn-reset {
+.Button {
   background: #2c2e46;
   border: 1px solid #8689a2;
   border-radius: 3px;
-  width: 100%;
   color: #fff;
-  padding: 8px 0;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
   cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
   outline-color: #4d90fe;
+  padding: 8px 0;
+  width: 100%;
 
   &:hover {
     background-color: #20223a;
   }
 }
 
-.history {
+.Board {
+  height: 0;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-top: 100%;
+  position: relative;
   width: 100%;
+
+  &.is-gameover {
+    color: #575966;
+  }
+
+  &-grid {
+    background: #45495b;
+    border: 1px solid #45495b;
+    box-sizing: border-box;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+    justify-items: stretch;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.Square {
+  background-color: #313347;
+  border: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  outline-color: #4d90fe;
+
+  &.is-playerOne {
+    color: #edc84c;
+  }
+
+  &.is-playerTwo {
+    color: #f44455;
+  }
+
+  .Board.is-gameover & {
+    color: #575966;
+    outline: none;
+  }
+
+  .Board.is-gameover &.is-winner {
+    background-color: #0cc2aa;
+    color: #fff;
+  }
+}
+
+.GameState {
+  background-color: #2c2e46;
+  box-sizing: border-box;
+  color: #fff;
+  margin: auto;
+  padding: 15px 0;
+  width: 100%;
+
+  &.is-playerOne {
+    color: #edc84c;
+  }
+
+  &.is-playerTwo {
+    color: #f44455;
+  }
+
+  &.is-winner {
+    color: #0cc2aa;
+  }
+
+  &.is-draw {
+    color: #ddd;
+  }
+}
+
+.GameHistory {
+  color: #fff;
   margin: 30px auto;
   text-align: center;
-  color: #fff;
+  width: 100%;
 }
 
-.history__list {
-  width: 100%;
+.HistoryList {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
-.history__entry {
+.HistoryEntry {
   background: #2c2e46;
-  margin-bottom: 5px;
   cursor: pointer;
-
-  button {
-    border: none;
-    width: 100%;
-    background: transparent;
-    padding: 12px 0;
-    color: #fff;
-    font-family: "Nunito", sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    outline-color: #4d90fe;
-  }
+  margin-bottom: 5px;
 
   &:hover {
     background: #3e4271;
   }
 
-  &--selected {
-    @extend .history__entry;
+  &.is-selected {
     background: #3e4271;
     cursor: default;
+  }
+
+  &-button {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    outline-color: #4d90fe;
+    padding: 12px 0;
+    width: 100%;
   }
 }

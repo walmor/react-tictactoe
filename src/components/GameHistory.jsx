@@ -15,7 +15,7 @@ export default function GameHistory(props) {
     if (history && history.length > 0) {
       return (
         <div>
-          <button className="btn-reset" onClick={onResetClick}>
+          <button className="Button" onClick={onResetClick}>
             reset game
           </button>
           <HistoryList {...props} />
@@ -26,8 +26,8 @@ export default function GameHistory(props) {
   })();
 
   return (
-    <div className="history">
-      <h2 className="subtitle">Moves history</h2>
+    <div className="GameHistory">
+      <h2 className="Subtitle">Moves history</h2>
       {body}
     </div>
   );

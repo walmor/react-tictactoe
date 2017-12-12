@@ -21,14 +21,14 @@ export default function Board({ gameState, onClick }) {
     squares.push(<Square key={key} onClick={() => onClick(x)} {...props} />);
   }
 
-  let boardClass = 'board';
+  let boardClass = 'Board';
   if (gameState.isGameOver()) {
-    boardClass += '--gameover';
+    boardClass += ' is-gameover';
   }
 
   return (
-    <div className="board-wrap">
-      <div className={boardClass}>{squares}</div>
+    <div className={boardClass}>
+      <div className="Board-grid">{squares}</div>
     </div>
   );
 }

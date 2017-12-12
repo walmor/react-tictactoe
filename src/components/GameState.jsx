@@ -8,7 +8,7 @@ const propTypes = {
 
 export default function GameState({ gameState }) {
   let message;
-  let className = 'state-message--';
+  let className = 'GameState is-';
 
   if (gameState.hasWinner()) {
     message = `Player ${gameState.getWinner()} won.`;
@@ -19,7 +19,7 @@ export default function GameState({ gameState }) {
   } else {
     const nextPlayer = gameState.getNextPlayer();
     message = `Next player: ${nextPlayer}`;
-    className += nextPlayer === PLAYER.PlayerOne ? 'player-one' : 'player-two';
+    className += nextPlayer === PLAYER.PlayerOne ? 'playerOne' : 'playerTwo';
   }
 
   return (

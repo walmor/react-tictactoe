@@ -13,17 +13,17 @@ const defaultProps = {
 };
 
 export default function Square({ value, isWinnerSquare, onClick }) {
-  const classPrefix = 'board__square';
+  const classPrefix = 'Square';
   let className = classPrefix;
 
   if (value === PLAYER.PlayerOne) {
-    className += '--player-one';
+    className += ' is-playerOne';
   } else if (value === PLAYER.PlayerTwo) {
-    className += '--player-two';
+    className += ' is-playerTwo';
   }
 
   if (isWinnerSquare) {
-    className += ` ${classPrefix}--winner`;
+    className += ' is-winner';
   }
 
   return (

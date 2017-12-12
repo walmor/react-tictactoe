@@ -28,8 +28,8 @@ export default class Game extends React.Component {
     const selectedStateIndex = this.game.getCurrentGameIndex();
 
     return (
-      <div className="game">
-        <h1 className="title">Tic Tac Toe</h1>
+      <div className="Game">
+        <h1 className="Title">Tic Tac Toe</h1>
         <Board gameState={gameState} onClick={this.handleSquareClick} />
         <GameState gameState={gameState} />
         <GameHistory

@@ -12,13 +12,15 @@ const propTypes = {
 export default function HistoryEntry({
   state, index, isSelected, onSelectGameStateClick,
 }) {
-  const className = `history__entry${isSelected ? '--selected' : ''}`;
+  const className = `HistoryEntry${isSelected ? ' is-selected' : ''}`;
   const loc = state.getLocation();
   const message = `Move #${index + 1}: Player ${state.getPlayer()} on square [${loc}]`;
 
   return (
     <li className={className}>
-      <button onClick={() => onSelectGameStateClick(index)}>{message}</button>
+      <button className="HistoryEntry-button" onClick={() => onSelectGameStateClick(index)}>
+        {message}
+      </button>
     </li>
   );
 }
