@@ -1,0 +1,27 @@
+.HistoryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.HistoryEntry {
+  background: $contrast-color;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    background: $accent-color;
+  }
+
+  &.is-selected {
+    background: $accent-color;
+    cursor: default;
+  }
+
+  &-button {
+    @extend %button-base;
+    background: transparent;
+    border: 0;
+    width: 100%;
+  }
+}

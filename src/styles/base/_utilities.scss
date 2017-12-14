@@ -1,0 +1,16 @@
+.u-marginBottom {
+  margin-bottom: 1rem !important;
+}
+
+.u-sizeFill {
+  width: 100% !important;
+}
+
+%button-base {
+  color: $main-forecolor;
+  cursor: pointer;
+  font-family: $text-font;
+  font-size: 1em;
+  outline-color: $outline-color;
+  padding: 0.6rem;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HistoryList from './HistoryList';
 import TicTacToeState from '../core/TicTacToeState';
+import Button from './Button';
+import Subtitle from './Subtitle';
 
 const propTypes = {
   history: PropTypes.arrayOf(PropTypes.instanceOf(TicTacToeState)).isRequired,
@@ -15,9 +17,9 @@ export default function GameHistory(props) {
     if (history && history.length > 0) {
       return (
         <div>
-          <button className="Button" onClick={onResetClick}>
+          <Button onClick={onResetClick} cssClass="u-sizeFill u-marginBottom">
             reset game
-          </button>
+          </Button>
           <HistoryList {...props} />
         </div>
       );
@@ -26,8 +28,8 @@ export default function GameHistory(props) {
   })();
 
   return (
-    <div className="GameHistory">
-      <h2 className="Subtitle">Moves history</h2>
+    <div className="u-marginBottom">
+      <Subtitle>Moves history</Subtitle>
       {body}
     </div>
   );

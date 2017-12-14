@@ -1,0 +1,26 @@
+.Square {
+  background-color: $background-color;
+  border: 0;
+  font-family: $text-font;
+  font-size: 3.2em;
+  font-weight: bold;
+  outline-color: $outline-color;
+
+  &.is-playerOne {
+    color: $player-one-color;
+  }
+
+  &.is-playerTwo {
+    color: $player-two-color;
+  }
+
+  .Board.is-gameover & {
+    color: $game-over-color;
+    outline: none;
+  }
+
+  .Board.is-gameover &.is-winner {
+    background-color: $winner-color;
+    color: $winner-forecolor;
+  }
+}

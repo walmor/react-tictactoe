@@ -3,6 +3,7 @@ import TicTacToeGame from '../core/TicTacToeGame';
 import Board from './Board';
 import GameHistory from './GameHistory';
 import GameState from './GameState';
+import Title from './Title';
 
 export default class Game extends React.Component {
   constructor() {
@@ -29,7 +30,7 @@ export default class Game extends React.Component {
 
     return (
       <div className="Game">
-        <h1 className="Title">Tic Tac Toe</h1>
+        <Title>Tic Tac Toe</Title>
         <Board gameState={gameState} onClick={this.handleSquareClick} />
         <GameState gameState={gameState} />
         <GameHistory

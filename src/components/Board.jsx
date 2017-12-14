@@ -25,6 +25,7 @@ export default function Board({ gameState, onClick }) {
   if (gameState.isGameOver()) {
     boardClass += ' is-gameover';
   }
+  boardClass += ' u-marginBottom';
 
   return (
     <div className={boardClass}>
