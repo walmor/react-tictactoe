@@ -1,5 +1,8 @@
 const PLAYER = { None: '', PlayerOne: 'X', PlayerTwo: 'O' };
 
+/**
+ * Represents the game state at a given moment
+ */
 class TicTacToeState {
   constructor(index, previousState) {
     let board;
@@ -22,10 +25,17 @@ class TicTacToeState {
     }
   }
 
+  /**
+   * Gets the value present on the square with the specified index.
+   * @param {number} index
+   */
   getValue(index) {
     return this.getBoard()[index];
   }
 
+  /**
+   * Gets the next player.
+   */
   getNextPlayer() {
     const player = this.getPlayer();
 
@@ -34,10 +44,16 @@ class TicTacToeState {
     return player === PLAYER.PlayerOne ? PLAYER.PlayerTwo : PLAYER.PlayerOne;
   }
 
+  /**
+   * Determines whether the game has a winner or not.
+   */
   hasWinner() {
     return typeof this.getWin() !== 'undefined';
   }
 
+  /**
+   * Returns the winner if there is one, otherwise, returns false.
+   */
   getWinner() {
     if (this.hasWinner()) {
       return this.getWin().winner;
@@ -46,15 +62,25 @@ class TicTacToeState {
     return false;
   }
 
+  /**
+   * Determines whether the game ended in a draw.
+   */
   endedInADraw() {
     if (this.getWin()) return false;
     return this.isBoardCompleted();
   }
 
+  /**
+   * Determines whether the game is over.
+   */
   isGameOver() {
     return this.hasWinner() || this.endedInADraw();
   }
 
+  /**
+   * Determines whether a square is part of a winner line.
+   * @param {number} index The square index to be checked.
+   */
   isWinnerSquare(index) {
     const win = this.getWin();
 
@@ -73,6 +99,10 @@ class TicTacToeState {
     return false;
   }
 
+  /**
+   * Determines whether a move is valid.
+   * @param {number} index The square index to verify the move.
+   */
   isMoveValid(index) {
     if (this.hasWinner() || this.getValue(index)) {
       return false;
@@ -81,6 +111,10 @@ class TicTacToeState {
     return true;
   }
 
+  /**
+   * Returns a string with a graphical representation of the board.
+   * Only used for debug purpose.
+   * */
   printBoard() {
     let print = '';
 
@@ -92,6 +126,7 @@ class TicTacToeState {
     return print;
   }
 
+  /** Determines whether all the squares are filled. */
   isBoardCompleted() {
     const board = this.getBoard();
 
@@ -108,6 +143,11 @@ class TicTacToeState {
     return true;
   }
 
+  /**
+   * Create a new board state based on the previous state.
+   * @param previousState
+   * @private
+   */
   createNewBoardState(previousState) {
     const index = this.getLocation();
     const newBoard = previousState.getBoard().slice(0);
@@ -116,6 +156,10 @@ class TicTacToeState {
     return newBoard;
   }
 
+  /**
+   * Verify the board to see if there is a winner.
+   * @private
+   */
   checkWinner() {
     const board = this.getBoard();
 
@@ -147,6 +191,10 @@ class TicTacToeState {
     return undefined;
   }
 
+  /**
+   * Create the initial board state
+   * @private
+   */
   static createInitialBoardState() {
     return new Array(9);
   }
