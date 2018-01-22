@@ -1,0 +1,29 @@
+@mixin themevar($property, $variable) {
+  #{$property}: map-get($default-theme-props, $variable);
+  #{$property}: var(--#{$variable});
+}
+
+@mixin create-theme($name, $props) {
+  @if ($default-theme-props == null) {
+    $default-theme-props: $props !global;
+  }
+
+  $theme-props: map-merge($default-theme-props, $props);
+
+  @if ($available-themes == null) {
+    $available-themes: '' !global;
+  }
+
+  $available-themes: $available-themes +
+    '{ "name": "#{$name}", "className": "u-theme#{$name}" };' !global;
+
+  .u-theme#{$name} {
+    @each $prop, $value in $theme-props {
+      --#{$prop}: $value;
+    }
+  }
+
+  :root {
+    --available-themes: $available-themes;
+  }
+}

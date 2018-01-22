@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const propTypes = {
   cssClass: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.children,
+  children: PropTypes.node,
 };
 
 const defaultProps = {

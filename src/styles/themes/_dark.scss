@@ -1,0 +1,23 @@
+$text-font: 'Nunito', sans-serif;
+
+$theme-dark-props: (
+  main-bkg-color: hsl(235, 18%, 24%),
+  contrast-color: hsl(235, 23%, 22%),
+  accent-color: hsl(235, 29%, 34%),
+  main-forecolor: hsl(0, 0%, 100%),
+  grid-line-color: hsl(229, 14%, 31%),
+  button-color: hsl(235, 23%, 22%),
+  button-border: 1px solid hsl(234, 13%, 58%),
+  button-hover-color: hsl(235, 29%, 18%),
+  outline-color: hsl(217, 99%, 65%),
+  player-one-color: hsl(46, 82%, 61%),
+  player-two-color: hsl(354, 89%, 61%),
+  game-over-color: hsl(232, 8%, 37%),
+  winner-color: hsl(172, 88%, 40%),
+  winner-forecolor: hsl(0, 0%, 100%),
+  draw-color: hsl(0, 0%, 87%),
+  text-font: $text-font,
+  game-width: 350px
+);
+
+@include create-theme('Dark', $theme-dark-props);

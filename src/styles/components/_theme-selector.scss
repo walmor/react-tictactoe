@@ -1,10 +1,8 @@
-.Button {
-  @extend %button-base;
+.ThemeSelector {
+  @extend %control-base;
   @include themevar(background, 'button-color');
   @include themevar (border, 'button-border');
   border-radius: 3px;
-
-  &:hover {
-    @include themevar(background-color, 'button-hover-color');
-  }
+  padding: 0.3rem;
+  width: 100%;
 }

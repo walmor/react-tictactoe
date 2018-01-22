@@ -1,6 +1,7 @@
 .Subtitle {
-  border-bottom: 1px solid $grid-line-color;
-  color: $main-forecolor;
+  @include themevar(border-bottom-color, 'grid-line-color');
+  @include themevar(color, 'main-forecolor');
+  border-bottom: 1px solid;
   font-size: 1.2em;
   font-weight: normal;
   margin: 1rem auto;

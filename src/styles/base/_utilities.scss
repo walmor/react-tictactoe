@@ -6,11 +6,15 @@
   width: 100% !important;
 }
 
-%button-base {
-  color: $main-forecolor;
-  cursor: pointer;
-  font-family: $text-font;
+%control-base {
+  @include themevar(color, 'main-forecolor');
+  @include themevar(font-family, 'text-font');
+  @include themevar (outline-color, 'outline-color');
   font-size: 1em;
-  outline-color: $outline-color;
+}
+
+%button-base {
+  @extend %control-base;
+  cursor: pointer;
   padding: 0.6rem;
 }

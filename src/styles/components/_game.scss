@@ -1,6 +1,6 @@
 .Game {
+  @include themevar(max-width, 'game-width');
   margin: auto;
-  max-width: $game-width;
   padding: 0 1rem;
   text-align: center;
 }

@@ -5,16 +5,16 @@
 }
 
 .HistoryEntry {
-  background: $contrast-color;
+  @include themevar(background, 'contrast-color');
   cursor: pointer;
   margin-bottom: 0.5rem;
 
   &:hover {
-    background: $accent-color;
+    @include themevar(background, 'accent-color');
   }
 
   &.is-selected {
-    background: $accent-color;
+    @include themevar(background, 'accent-color');
     cursor: default;
   }
 

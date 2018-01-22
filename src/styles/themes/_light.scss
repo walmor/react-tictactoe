@@ -1,0 +1,19 @@
+$theme-light-props: (
+  main-bkg-color: hsl(0, 0%, 95%),
+  contrast-color: hsl(0, 0%, 86%),
+  accent-color: hsl(0, 0%, 63%),
+  main-forecolor: hsl(0, 2%, 34%),
+  grid-line-color: hsl(0, 0%, 89%),
+  button-color: hsl(0, 0%, 91%),
+  button-border: 1px solid hsl(0, 0%, 73%),
+  button-hover-color: hsl(0, 0%, 81%),
+  outline-color: hsl(217, 99%, 65%),
+  player-one-color: hsl(224, 91%, 66%),
+  player-two-color: hsl(354, 89%, 61%),
+  game-over-color: hsl(0, 0%, 78%),
+  winner-color: hsl(172, 88%, 40%),
+  winner-forecolor: hsl(0, 0%, 100%),
+  draw-color: hsl(0, 0%, 24%)
+);
+
+@include create-theme('Light', $theme-light-props);

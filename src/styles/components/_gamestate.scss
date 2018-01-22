@@ -1,21 +1,21 @@
 .GameState {
-  background-color: $contrast-color;
-  color: $main-forecolor;
+  @include themevar(background-color, 'contrast-color');
+  @include themevar(color, 'main-forecolor');
   padding: 1rem 0;
 
   &.is-playerOne {
-    color: $player-one-color;
+    @include themevar(color, 'player-one-color');
   }
 
   &.is-playerTwo {
-    color: $player-two-color;
+    @include themevar(color, 'player-two-color');
   }
 
   &.is-winner {
-    color: $winner-color;
+    @include themevar(color, 'winner-color');
   }
 
   &.is-draw {
-    color: $draw-color;
+    @include themevar(color, 'draw-color');
   }
 }

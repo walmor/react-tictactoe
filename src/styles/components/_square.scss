@@ -1,26 +1,26 @@
 .Square {
-  background-color: $background-color;
+  @include themevar(background-color, 'main-bkg-color');
+  @include themevar(font-family, 'text-font');
+  @include themevar(outline-color, 'outline-color');
   border: 0;
-  font-family: $text-font;
   font-size: 3.2em;
   font-weight: bold;
-  outline-color: $outline-color;
 
   &.is-playerOne {
-    color: $player-one-color;
+    @include themevar(color, 'player-one-color');
   }
 
   &.is-playerTwo {
-    color: $player-two-color;
+    @include themevar(color, 'player-two-color');
   }
 
   .Board.is-gameover & {
-    color: $game-over-color;
+    @include themevar(color, 'game-over-color');
     outline: none;
   }
 
   .Board.is-gameover &.is-winner {
-    background-color: $winner-color;
-    color: $winner-forecolor;
+    @include themevar(background-color, 'winner-color');
+    @include themevar(color, 'winner-forecolor');
   }
 }

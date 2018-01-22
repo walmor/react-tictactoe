@@ -1,20 +1,2 @@
-$background-color: hsl(235, 18%, 24%) !default;
-$contrast-color: hsl(235, 23%, 22%) !default;
-$accent-color: hsl(235, 29%, 34%) !default;
-$main-forecolor: hsl(0, 0%, 100%) !default;
-$grid-line-color: hsl(229, 14%, 31%) !default;
-
-$button-color: hsl(235, 23%, 22%) !default;
-$button-border-color: hsl(234, 13%, 58%) !default;
-$button-hover-color: hsl(235, 29%, 18%) !default;
-$outline-color: hsl(217, 99%, 65%) !default;
-
-$player-one-color: hsl(46, 82%, 61%) !default;
-$player-two-color: hsl(354, 89%, 61%) !default;
-$game-over-color: hsl(232, 8%, 37%) !default;
-$winner-color: hsl(172, 88%, 40%) !default;
-$winner-forecolor: hsl(0, 0%, 100%) !default;
-$draw-color: hsl(0, 0%, 87%) !default;
-
-$text-font: 'Nunito', sans-serif !default;
-$game-width: 350px !default;
+$default-theme-props: null;
+$available-themes: null;

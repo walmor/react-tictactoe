@@ -1,5 +1,5 @@
 .Title {
-  color: $main-forecolor;
+  @include themevar(color, 'main-forecolor');
   font-size: 3em;
   margin: 1rem auto;
 }

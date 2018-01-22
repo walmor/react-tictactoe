@@ -1,6 +1,10 @@
 @import 'abstracts/variables';
+@import 'abstracts/mixins';
 
 @import 'vendor/normalize';
+
+@import 'themes/dark';
+@import 'themes/light';
 
 @import 'base/base';
 @import 'base/fonts';
@@ -13,4 +17,5 @@
 @import 'components/history';
 @import 'components/square';
 @import 'components/subtitle';
+@import 'components/theme-selector';
 @import 'components/title';

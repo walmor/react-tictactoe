@@ -4,12 +4,14 @@
   position: relative;
 
   &.is-gameover {
-    color: $game-over-color;
+    @include themevar(color, 'game-over-color');
   }
 
   &-grid {
-    background: $grid-line-color;
-    border: 1px solid $grid-line-color;
+    @include themevar(background, 'grid-line-color');
+    @include themevar(border-color, 'grid-line-color');
+    border-style: solid;
+    border-width: 1px;
     display: grid;
     grid-gap: 1px;
     grid-template-columns: 1fr 1fr 1fr;

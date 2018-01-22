@@ -1,7 +1,8 @@
 html {
-  background-color: $background-color;
-  color: $main-forecolor;
-  font-family: $text-font;
+  @include themevar(background-color, 'main-bkg-color');
+  @include themevar(color, 'main-forecolor');
+  @include themevar(font-family, 'text-font');
+  overflow-y: scroll;
 }
 
 html,
