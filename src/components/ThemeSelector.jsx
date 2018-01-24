@@ -16,13 +16,13 @@ export default class ThemeSelector extends React.Component {
     return (
       <div>
         <Subtitle>Theme</Subtitle>
-        <select className="ThemeSelector" onChange={this.handleChange}>
+        <select
+          className="ThemeSelector"
+          defaultValue={this.themeManager.getCurrentTheme().name}
+          onChange={this.handleChange}
+        >
           {this.themeManager.getThemes().map(theme => (
-            <option
-              key={theme.name}
-              value={theme.name}
-              selected={this.themeManager.isCurrentTheme(theme)}
-            >
+            <option key={theme.name} value={theme.name}>
               {theme.name}
             </option>
           ))}
