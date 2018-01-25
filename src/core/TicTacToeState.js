@@ -16,7 +16,7 @@ class TicTacToeState {
     this.getWin = () => win;
 
     if (arguments.length === 0) {
-      board = TicTacToeState.createInitialBoardState();
+      board = new Array(9);
     } else {
       location = index;
       player = previousState.getNextPlayer();
@@ -189,14 +189,6 @@ class TicTacToeState {
     }
 
     return undefined;
-  }
-
-  /**
-   * Create the initial board state
-   * @private
-   */
-  static createInitialBoardState() {
-    return new Array(9);
   }
 }
 

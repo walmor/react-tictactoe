@@ -1,9 +1,49 @@
 import TicTacToeState from './TicTacToeState';
-import HistoryManager from './HistoryManager';
 
-export default class TicTaeToeGame {
+function getInitialState() {
+  return {
+    currentIndex: -1,
+    gameHistory: [],
+  };
+}
+
+export default class TicTacToeGame {
   constructor(component) {
-    this.historyManager = new HistoryManager(component);
+    this.getAppState = () => component.state;
+
+    this.setAppState = (changedState) => {
+      const newState = { ...changedState };
+      component.setState(newState);
+    };
+
+    component.state = getInitialState();
+  }
+
+  /**
+   * Gets the whole game history with all moves.
+   */
+  getGameHistory() {
+    return this.getAppState().gameHistory;
+  }
+
+  /**
+   * Gets the index of the current game state.
+   */
+  getCurrentGameIndex() {
+    return this.getAppState().currentIndex;
+  }
+
+  /**
+   * Gets the current game state.
+   */
+  getCurrentGameState() {
+    const appState = this.getAppState();
+
+    if (appState.currentIndex < 0) {
+      return new TicTacToeState();
+    }
+
+    return appState.gameHistory[appState.currentIndex];
   }
 
   /**
@@ -11,36 +51,26 @@ export default class TicTaeToeGame {
    * @param {number} index The square index where the move should be computed.
    */
   move(index) {
-    const currentGameState = this.historyManager.getCurrentGameState();
+    const currentGameState = this.getCurrentGameState();
 
     if (!currentGameState.isMoveValid(index)) {
       return;
     }
 
+    const appState = this.getAppState();
+
+    appState.gameHistory = appState.gameHistory || [];
+
+    if (appState.currentIndex < appState.gameHistory.length - 1) {
+      appState.gameHistory = appState.gameHistory.slice(0, appState.currentIndex + 1);
+    }
+
     const newGameState = new TicTacToeState(index, currentGameState);
 
-    this.historyManager.pushNewGameState(newGameState);
-  }
+    appState.gameHistory.push(newGameState);
+    appState.currentIndex = appState.gameHistory.length - 1;
 
-  /**
-   * Returns the current game state.
-   */
-  getCurrentGameState() {
-    return this.historyManager.getCurrentGameState();
-  }
-
-  /**
-   * Returns the current game state index.
-   */
-  getCurrentGameIndex() {
-    return this.historyManager.getCurrentGameIndex();
-  }
-
-  /**
-   * Returns the whole game history.
-   */
-  getGameHistory() {
-    return this.historyManager.getGameHistory();
+    this.setAppState(appState);
   }
 
   /**
@@ -48,13 +78,15 @@ export default class TicTaeToeGame {
    * @param {number} index - The index of the game state to move to.
    */
   selectGameState(index) {
-    this.historyManager.selectGameState(index);
+    const appState = this.getAppState();
+    appState.currentIndex = index;
+    this.setAppState(appState);
   }
 
   /**
    * Reset the game to its initial state.
    */
   reset() {
-    this.historyManager.reset();
+    this.setAppState(getInitialState());
   }
 }
