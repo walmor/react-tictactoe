@@ -17,6 +17,9 @@ class TicTacToeState {
 
     if (arguments.length === 0) {
       board = new Array(9);
+      player = null;
+      location = null;
+      win = null;
     } else {
       location = index;
       player = previousState.getNextPlayer();
@@ -48,7 +51,7 @@ class TicTacToeState {
    * Determines whether the game has a winner or not.
    */
   hasWinner() {
-    return typeof this.getWin() !== 'undefined';
+    return this.getWin() !== null;
   }
 
   /**
@@ -59,7 +62,7 @@ class TicTacToeState {
       return this.getWin().winner;
     }
 
-    return false;
+    return null;
   }
 
   /**
@@ -104,6 +107,10 @@ class TicTacToeState {
    * @param {number} index The square index to verify the move.
    */
   isMoveValid(index) {
+    if (index < 0 || index > 8) {
+      return false;
+    }
+
     if (this.hasWinner() || this.getValue(index)) {
       return false;
     }
@@ -188,7 +195,7 @@ class TicTacToeState {
       }
     }
 
-    return undefined;
+    return null;
   }
 }
 
