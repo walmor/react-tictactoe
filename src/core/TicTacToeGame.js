@@ -1,22 +1,39 @@
 import TicTacToeState from './TicTacToeState';
 
-function getInitialState() {
-  return {
-    currentIndex: -1,
-    gameHistory: [],
-  };
+const INITIAL_STATE = {
+  currentIndex: -1,
+  gameHistory: [],
+};
+
+function cloneState(state) {
+  const clonedState = { ...state };
+  clonedState.gameHistory = state.gameHistory.slice(0);
+  return clonedState;
+}
+
+function isValidState(state) {
+  if (!state) return false;
+
+  if (typeof state.currentIndex === 'undefined') return false;
+  if (typeof state.gameHistory === 'undefined') return false;
+
+  if (!Number.isInteger(state.currentIndex)) return false;
+  if (!(state.gameHistory instanceof Array)) return false;
+
+  if (state.currentIndex >= state.gameHistory.length) return false;
+
+  return true;
 }
 
 export default class TicTacToeGame {
   constructor(component) {
-    this.getAppState = () => component.state;
+    this.getAppState = () => (isValidState(component.state) ? component.state : INITIAL_STATE);
 
     this.setAppState = (changedState) => {
-      const newState = { ...changedState };
-      component.setState(newState);
+      component.setState(changedState);
     };
 
-    component.state = getInitialState();
+    component.state = INITIAL_STATE;
   }
 
   /**
@@ -57,9 +74,7 @@ export default class TicTacToeGame {
       return;
     }
 
-    const appState = this.getAppState();
-
-    appState.gameHistory = appState.gameHistory || [];
+    const appState = cloneState(this.getAppState());
 
     if (appState.currentIndex < appState.gameHistory.length - 1) {
       appState.gameHistory = appState.gameHistory.slice(0, appState.currentIndex + 1);
@@ -87,6 +102,10 @@ export default class TicTacToeGame {
    * Reset the game to its initial state.
    */
   reset() {
-    this.setAppState(getInitialState());
+    this.setAppState(INITIAL_STATE);
+  }
+
+  static getInitialState() {
+    return INITIAL_STATE;
   }
 }
