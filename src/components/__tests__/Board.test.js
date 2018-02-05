@@ -39,6 +39,21 @@ describe('<Board/>', () => {
     });
   });
 
+  it('should pass correct onClick function to squares', () => {
+    const onClick = jest.fn();
+    const props = getMockProps({
+      onClick,
+    });
+
+    const wrapper = shallow(<Board {...props} />);
+
+    wrapper.find(Square).forEach((square, i) => {
+      square.props().onClick();
+      expect(onClick).toBeCalledWith(i);
+      onClick.mockClear();
+    });
+  });
+
   it('should set the game over class', () => {
     const state = new TicTacToeState();
     state.isGameOver = () => true;
