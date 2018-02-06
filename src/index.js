@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/index.css';
 import Game from './components/Game';
+import TicTacToeGame from './core/TicTacToeGame';
 
-ReactDOM.render(<Game />, document.getElementById('root'));
+function createGame(component) {
+  return new TicTacToeGame(component);
+}
+
+ReactDOM.render(<Game createGame={createGame} />, document.getElementById('root'));
 registerServiceWorker();

@@ -1,15 +1,19 @@
 import React from 'react';
-import TicTacToeGame from '../core/TicTacToeGame';
+import PropTypes from 'prop-types';
 import Board from './Board';
 import GameHistory from './GameHistory';
 import ThemeSelector from './ThemeSelector';
 import GameState from './GameState';
 import Title from './Title';
 
+const propTypes = {
+  createGame: PropTypes.func.isRequired,
+};
+
 export default class Game extends React.Component {
-  constructor() {
-    super();
-    this.game = new TicTacToeGame(this);
+  constructor(props) {
+    super(props);
+    this.game = props.createGame(this);
   }
 
   handleSquareClick = (index) => {
@@ -45,3 +49,5 @@ export default class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = propTypes;
