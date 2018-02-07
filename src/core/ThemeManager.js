@@ -1,17 +1,31 @@
+export const FALLBACK_THEME = { name: 'Default', className: '' };
+export const AVAILABLE_THEMES_PROP = '--available-themes';
+export const CURRENT_THEME_NAME_KEY = 'current-theme-name';
+
 export default class ThemeManager {
   constructor() {
     let themes;
     let currentTheme;
 
+    const isValidThemeObject = (theme) => {
+      if (!theme) return false;
+      if (typeof theme.name === 'undefined') return false;
+      if (typeof theme.className === 'undefined') return false;
+      if (!theme.name) return false;
+      if (!theme.className) return false;
+
+      return true;
+    };
+
     const loadThemes = () => {
       themes = getComputedStyle(document.documentElement)
-        .getPropertyValue('--available-themes')
+        .getPropertyValue(AVAILABLE_THEMES_PROP)
         .trim();
 
       themes = themes.substring(1, themes.length - 2).replace(/\\/g, '');
 
       if (themes === '') {
-        themes = [];
+        themes = [FALLBACK_THEME];
         return;
       }
 
@@ -19,23 +33,28 @@ export default class ThemeManager {
 
       themes = themes.map((th) => {
         try {
-          return JSON.parse(th);
+          const theme = JSON.parse(th);
+          return isValidThemeObject(theme) ? theme : null;
         } catch (e) {
           return null;
         }
       });
 
       themes = themes.filter(th => th !== null);
+
+      if (themes.length === 0) {
+        themes = [FALLBACK_THEME];
+      }
     };
 
     const getSavedThemeName = () => {
       if (typeof localStorage === 'undefined') return null;
-      return localStorage.getItem('current-theme-name');
+      return localStorage.getItem(CURRENT_THEME_NAME_KEY);
     };
 
     const saveThemeName = (name) => {
       if (typeof localStorage === 'undefined') return;
-      localStorage.setItem('current-theme-name', name);
+      localStorage.setItem(CURRENT_THEME_NAME_KEY, name);
     };
 
     const getDefaultTheme = () => {
@@ -48,10 +67,6 @@ export default class ThemeManager {
 
       if (!defaultTheme) {
         [defaultTheme] = themes;
-      }
-
-      if (!defaultTheme) {
-        defaultTheme = { name: 'Default', className: '' };
       }
 
       return defaultTheme;
