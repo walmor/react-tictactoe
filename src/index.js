@@ -4,10 +4,23 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles/index.css';
 import Game from './components/Game';
 import TicTacToeGame from './core/TicTacToeGame';
+import ThemeManager from './core/ThemeManager';
 
-function createGame(component) {
-  return new TicTacToeGame(component);
-}
+const container = (function createContainer() {
+  let gameManager;
+  let themeManager;
 
-ReactDOM.render(<Game createGame={createGame} />, document.getElementById('root'));
+  return {
+    getGameManager(component) {
+      if (!gameManager) gameManager = new TicTacToeGame(component);
+      return gameManager;
+    },
+    getThemeManager() {
+      if (!themeManager) themeManager = new ThemeManager();
+      return themeManager;
+    },
+  };
+}());
+
+ReactDOM.render(<Game container={container} />, document.getElementById('root'));
 registerServiceWorker();

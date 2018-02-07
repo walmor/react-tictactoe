@@ -7,13 +7,17 @@ import GameState from './GameState';
 import Title from './Title';
 
 const propTypes = {
-  createGame: PropTypes.func.isRequired,
+  container: PropTypes.shape({
+    getGameManager() {},
+    getThemeManager() {},
+  }).isRequired,
 };
 
 export default class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.game = props.createGame(this);
+  constructor({ container }) {
+    super();
+    this.game = container.getGameManager(this);
+    this.themeManager = container.getThemeManager();
   }
 
   handleSquareClick = (index) => {
@@ -38,7 +42,7 @@ export default class Game extends React.Component {
         <Title>Tic Tac Toe</Title>
         <Board gameState={gameState} onClick={this.handleSquareClick} />
         <GameState gameState={gameState} />
-        <ThemeSelector />
+        <ThemeSelector themeManager={this.themeManager} />
         <GameHistory
           history={history}
           selectedStateIndex={selectedStateIndex}

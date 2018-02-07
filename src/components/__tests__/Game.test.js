@@ -7,11 +7,19 @@ import GameHistory from '../GameHistory';
 import ThemeSelector from '../ThemeSelector';
 import TicTacToeGame from '../../core/TicTacToeGame';
 import TicTacToeState from '../../core/TicTacToeState';
+import ThemeManager from '../../core/ThemeManager';
 
-function gameWrapper(gameOverrides) {
-  const createGame = component => Object.assign(new TicTacToeGame(component), gameOverrides);
-  const wrapper = shallow(<Game createGame={createGame} />);
-  return wrapper;
+function gameWrapper(overrides) {
+  const container = {
+    getGameManager(component) {
+      return Object.assign(new TicTacToeGame(component), overrides);
+    },
+    getThemeManager() {
+      return new ThemeManager();
+    },
+  };
+
+  return shallow(<Game container={container} />);
 }
 
 describe('<Game/>', () => {

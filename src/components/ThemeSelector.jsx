@@ -1,11 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
-import ThemeManager from '../core/ThemeManager';
+
+const propTypes = {
+  themeManager: PropTypes.shape({
+    setCurrentTheme() {},
+    getCurrentTheme() {},
+    getThemes() {},
+  }).isRequired,
+};
 
 export default class ThemeSelector extends React.Component {
-  constructor() {
+  constructor({ themeManager }) {
     super();
-    this.themeManager = new ThemeManager();
+    this.themeManager = themeManager;
   }
 
   handleChange = (e) => {
@@ -31,3 +39,5 @@ export default class ThemeSelector extends React.Component {
     );
   }
 }
+
+ThemeSelector.propTypes = propTypes;
