@@ -1,0 +1,11 @@
+.About {
+  p {
+    line-height: 1.3rem;
+    text-align: justify;
+  }
+
+  a {
+    @include themevar(color, 'main-forecolor');
+    text-decoration: underline;
+  }
+}

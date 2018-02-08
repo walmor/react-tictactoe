@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import About from './About';
 import Board from './Board';
 import GameHistory from './GameHistory';
 import ThemeSelector from './ThemeSelector';
@@ -42,13 +43,14 @@ export default class Game extends React.Component {
         <Title>Tic Tac Toe</Title>
         <Board gameState={gameState} onClick={this.handleSquareClick} />
         <GameState gameState={gameState} />
-        <ThemeSelector themeManager={this.themeManager} />
         <GameHistory
           history={history}
           selectedStateIndex={selectedStateIndex}
           onSelectGameStateClick={this.handleSelectGameState}
           onResetClick={this.handleReset}
         />
+        <ThemeSelector themeManager={this.themeManager} />
+        <About />
       </div>
     );
   }
